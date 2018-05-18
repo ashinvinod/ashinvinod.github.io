@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+<body style="background-color:SlateGray;">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=2"> 
+
+<style>
+
+body {
+	font-size: 100%;
+}
+p{
+	font-size: 1.5em;
+	text-align: center;
+    	color: whitesmoke;
+    	font-family: 'Montserrat', sans-serif;
+}
+p.title1{
+	font-size: 3.5em;
+	text-align: center;
+    	color: whitesmoke;
+    	font-family: 'Montserrat', sans-serif;
+}
+p.title2{
+	font-size: 1.5em;
+	text-align: center;
+    	color: whitesmoke;
+    	font-family: 'Montserrat', sans-serif;
+}
+p.title3{
+	font-size: 4em;
+	text-align: center;
+    	color: whitesmoke;
+    	font-family: 'Montserrat', sans-serif;
+}
+p.title4{
+	font-size: 2em;
+	text-align: center;
+    	color: whitesmoke;
+    	font-family: 'Montserrat', sans-serif;
+}
+p.title5{
+	font-size: 1em;
+	text-align: center;
+    	color: whitesmoke;
+    	font-family: 'Montserrat', sans-serif;
+}	
+</style>
+
+<script>
+var j1;
+var j2;
+var j3;
+var j4;
+var y = "thequickbrownfoxjumpsoverthelazydog";
+var len = y.length;
+var i = 0;
+var c;
+var fl=0;
+function removetext()
+{
+	var strng=document.getElementById("text_tag_input").value;
+	document.getElementById("text_tag_input").value=strng.substring(0,strng.length-1);
+}
+function gettime1()
+{
+	var d1 = new Date();
+        var n1 = d1.getTime();
+	return n1;
+}
+function myFunction(event)
+{
+	window.addEventListener("keydown", function(e)
+	{
+		if([37, 38, 39, 40].indexOf(e.keyCode) > -1)
+		{
+        		e.preventDefault();
+			alert("Arrow keys are disabled. Please refresh the page.");
+    		}
+	}, false);
+	var x = event.key;
+	
+	i++;
+	if (event.keyCode == 8)
+	{
+		i=i-2;
+	} 
+	c = y.charAt(i-1);
+	if (x == c)
+	{
+		
+		document.body.style.backgroundColor = "slategray"; 
+		document.getElementById("dem").innerHTML = y.charAt(i-1);
+		document.getElementById("abs").innerHTML = "Good";
+		if(i == 1)
+		{
+			j1 = gettime1();
+		}
+		if(i == 35)
+		{
+			j2 = gettime1();
+			j3 = j2 - j1;
+			j3 = j3/1000;
+			j4 = 35/j3;
+			document.getElementsByTagName('div')[0].innerHTML=" ";
+			document.getElementById("check3").innerHTML = "Congratulations!";
+			document.getElementById("check2").innerHTML = "Your typing speed is " + j4 + " characters per second.";
+			document.getElementById("check4").innerHTML = "Refresh page to try again.";		
+		}
+	}
+	else
+	{
+		document.body.style.backgroundColor = "red"; 
+		document.getElementById("abs").innerHTML = "Wrong key!";
+		removetext();
+	}
+}
+</script>
+
+<div align="center">
+<p class="title1"> Keyboard Speedtest </p>
+<p class="title2"> <b>Type the following into the textbox below</b> <br> "thequickbrownfoxjumpsoverthelazydog" </p>
+<input type="text" id="texxt" onkeydown="myFunction(event)" >
+<p id="demo"></p>
+<p id="dem"></p>
+<p id="abs"></p>
+<p id="check1"></p>
+</div>
+<p id="check3" class="title3"></p>
+<p id="check2" class="title4"></p>
+<p id="check4" class="title5"></p>
+</body>
+</html>
